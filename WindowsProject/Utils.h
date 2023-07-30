@@ -1,6 +1,7 @@
 #pragma once
 class Utils
 {
+public:
 	static void DrawText(HDC hdc, Pos pos, const wstring str);
 
 	static void DrawRect(HDC hdc, Pos pos, int32 w, int32 h);

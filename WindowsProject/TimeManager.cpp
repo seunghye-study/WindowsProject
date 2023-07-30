@@ -18,6 +18,7 @@ void TimeManager::Update()
 
 	_deltaTime = (currentCount - _prevCount) / static_cast<float>(_frequency); // cpu클럭/주파수
 	_prevCount = currentCount;
+
 	_frameCount++;
 	_frameTime += _deltaTime;
 
