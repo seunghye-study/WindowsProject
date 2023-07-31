@@ -5,7 +5,7 @@ class TimeManager
 	DECLARE_SINGLE(TimeManager);
 
 public:
-	void init();
+	void Init();
 	void Update();
 
 	uint32 GetFps() { return _fps; }

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "TimeManager.h"
 
-void TimeManager::init()
+void TimeManager::Init()
 {
 	// ms로 초를 반환, 정밀도가 살짝 떨어짐
 	//::GetTickCount64();

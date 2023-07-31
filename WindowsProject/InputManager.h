@@ -19,7 +19,7 @@ enum class KeyType
 	Down = VK_DOWN,
 	Left = VK_LEFT,
 	Right = VK_RIGHT,
-
+	SpaceBar = VK_SPACE,
 	W = 'W',
 	A = 'A',
 	S = 'S',
@@ -36,7 +36,7 @@ class InputManager
 {
 	DECLARE_SINGLE(InputManager);
 public:
-	void init(HWND hwnd);
+	void Init(HWND hwnd);
 	void Update();
 
 	// 키보드 누르고 있을 때

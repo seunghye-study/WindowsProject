@@ -9,7 +9,7 @@ public:									\
 		static classname s_instance;	\
 		return &s_instance;				\
 	}									\
-private:								\
+protected:								\
 	classname() {}						\
 
 #define GET_SINGLE(classname)	classname::GetInstance()

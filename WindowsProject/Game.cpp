@@ -30,8 +30,8 @@ void Game::init(HWND hwnd)
 	HBITMAP prev = (HBITMAP)::SelectObject(_hdcBack, _bmpBack);
 	::DeleteObject(prev);
 
-	GET_SINGLE(TimeManager)->init();
-	GET_SINGLE(InputManager)->init(hwnd);
+	GET_SINGLE(TimeManager)->Init();
+	GET_SINGLE(InputManager)->Init(hwnd);
 	GET_SINGLE(SceneManager)->Init();
 	
 	// 표시할 씬 타입 초기화(dev scene)
