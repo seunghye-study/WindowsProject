@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "GameScene.h"
-#include "ObjectManager.h"
 #include "Player.h"
 #include "Monster.h"
+#include "ObjectManager.h"
 
 GameScene::GameScene()
 {
@@ -14,13 +14,12 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
-	/*_player = new Player();
-	_player->Init();*/
-
-	Player* player = GET_SINGLE(ObjectManager)->CreateObject<Player>();
-	player->setPos(Pos{ 400, 400 });
-	GET_SINGLE(ObjectManager)->Add(player);
-
+	{
+		Player* player = GET_SINGLE(ObjectManager)->CreateObject<Player>();
+		player->setPos(Pos{ 400, 400 });
+		GET_SINGLE(ObjectManager)->Add(player);
+	}
+	
 	for (int32 i = 0; i < 5; i++)
 	{
 		Monster* monster = GET_SINGLE(ObjectManager)->CreateObject<Monster>();
@@ -31,10 +30,6 @@ void GameScene::Init()
 
 void GameScene::Update()
 {
-	/*if (_player)
-		_player->Update();*/
-
-	// ¿Ö ¿À·ù ??
 	const vector<Object*>& objects = GET_SINGLE(ObjectManager)->GetObjects();
 	for (Object* object : objects)
 	{
@@ -44,7 +39,9 @@ void GameScene::Update()
 
 void GameScene::Render(HDC hdc)
 {
-	/*if (_player)
-		_player->Render(hdc);*/
 	const vector<Object*>& objects = GET_SINGLE(ObjectManager)->GetObjects();
+	for (Object* object:objects)
+	{
+		object->Render(hdc);
+	}
 }

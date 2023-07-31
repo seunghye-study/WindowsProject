@@ -1,26 +1,27 @@
 #include "pch.h"
 #include "Player.h"
-#include "Utils.h"
-#include "TimeManager.h"
 #include "InputManager.h"
+#include "TimeManager.h"
 #include "Missile.h"
+#include "ObjectManager.h"
+#include "ResourceManager.h"
+#include "LineMesh.h"
 
-Player::Player()
+Player::Player() : Object(ObjectType::Player) // 초기화
 {
 
 }
 
 Player::~Player()
 {
+
 }
 
 void Player::Init()
 {
-	// todo : data
 	_stat.hp = 100;
 	_stat.maxHp = 100;
-	_stat.speed = 500;
-
+	_stat.speed = 10000000;
 	_pos.x = 400;
 	_pos.y = 500;
 }
@@ -47,14 +48,15 @@ void Player::Update()
 	}
 	if (GET_SINGLE(InputManager)->GetButtonDown(KeyType::SpaceBar))
 	{
-		//TODO : 미사일 발사
-		Missile* misssile = new Missile();
-		// 미사일을 어떻게 씬에 배치할 것인가?
-		// 어디 씬에 배치하는게 제일 효율적인가?
-
+		Missile* missile = new Missile();
+		missile->setPos(_pos);
+		GET_SINGLE(ObjectManager)->Add(missile);
 	}
 }
 
 void Player::Render(HDC hdc)
 {
+	const LineMesh* mesh = GET_SINGLE(ResourceManager)->GetLineMesh(L"Player");
+	if (mesh)
+		mesh->Render(hdc, _pos);
 }

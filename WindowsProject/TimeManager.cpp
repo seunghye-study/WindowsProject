@@ -3,10 +3,6 @@
 
 void TimeManager::Init()
 {
-	// ms로 초를 반환, 정밀도가 살짝 떨어짐
-	//::GetTickCount64();
-
-	// cpu clock 과 주파수로 경과된 시간 반환
 	::QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&_frequency));
 	::QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&_prevCount)); // CPU 클럭
 }

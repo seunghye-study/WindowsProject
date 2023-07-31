@@ -3,7 +3,9 @@
 #include "Types.h"
 #include "Define.h"
 #include "Enum.h"
-#include <Windows.h>
+#include "Utils.h"
+
+#include <windows.h>
 #include <vector>
 #include <list>
 #include <map>

@@ -30,6 +30,15 @@
     <Filter Include="소스 파일\03. Object\Game">
       <UniqueIdentifier>{78adf98e-05c6-461a-b7bd-a4fc9ec691c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\04. Reources">
+      <UniqueIdentifier>{77e7e069-bc71-49c6-85b6-9aaa9ce9fede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\Game">
+      <UniqueIdentifier>{76940719-bd2f-402c-9ace-6312df86b3fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Reources\Game">
+      <UniqueIdentifier>{8f1099ec-e4a5-45bf-a838-aec08a15c387}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -53,9 +62,6 @@
     <ClInclude Include="targetver.h">
       <Filter>소스 파일\99. Headers\Default</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsProject.h">
-      <Filter>소스 파일\99. Headers\Default</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>소스 파일\00. MainGame</Filter>
     </ClInclude>
@@ -74,12 +80,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>소스 파일\01. Manager</Filter>
     </ClInclude>
-    <ClInclude Include="DevScene.h">
-      <Filter>소스 파일\02. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>소스 파일\02. Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>소스 파일\03. Object</Filter>
     </ClInclude>
@@ -92,7 +92,30 @@
     <ClInclude Include="Player.h">
       <Filter>소스 파일\03. Object\Game</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="ObjectManager.h">
+      <Filter>소스 파일\01. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceBase.h">
+      <Filter>소스 파일\04. Reources</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>소스 파일\01. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsProject.h">
+      <Filter>소스 파일\00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="DevScene.h">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EditScene.h">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMesh.h">
+      <Filter>소스 파일\04. Reources\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WindowsProject.rc">
@@ -132,12 +155,6 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>소스 파일\01. Manager</Filter>
     </ClCompile>
-    <ClCompile Include="DevScene.cpp">
-      <Filter>소스 파일\02. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>소스 파일\02. Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\03. Object</Filter>
     </ClCompile>
@@ -151,7 +168,25 @@
       <Filter>소스 파일\03. Object\Game</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\01. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceBase.cpp">
+      <Filter>소스 파일\04. Reources</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>소스 파일\01. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="DevScene.cpp">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EditScene.cpp">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>소스 파일\02. Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMesh.cpp">
+      <Filter>소스 파일\04. Reources\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

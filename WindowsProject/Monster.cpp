@@ -1,20 +1,21 @@
 #include "pch.h"
 #include "Monster.h"
-#include "Utils.h"
-#include "InputManager.h"
-#include "TimeManager.h"
 
-Monster::Monster()
+Monster::Monster() : Object(ObjectType::Monster)
 {
+
 }
 
 Monster::~Monster()
 {
+
 }
 
 void Monster::Init()
 {
-	//TODO :
+	_stat.hp = 100;
+	_stat.maxHp = 100;
+	_stat.speed = 10;
 }
 
 void Monster::Update()

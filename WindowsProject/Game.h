@@ -1,4 +1,5 @@
 #pragma once
+
 class Game
 {
 public:
@@ -6,7 +7,7 @@ public:
 	~Game();
 
 public:
-	void init(HWND hwnd);
+	void Init(HWND hwnd);
 	void Update();
 	void Render();
 
@@ -15,7 +16,7 @@ private:
 	HDC _hdc = {};
 
 private:
-	// double buffering
+	//Double buffering
 	RECT _rect;
 	HDC _hdcBack = {};
 	HBITMAP _bmpBack = {};

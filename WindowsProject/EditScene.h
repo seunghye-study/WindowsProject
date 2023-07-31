@@ -1,16 +1,20 @@
 #pragma once
 #include "Scene.h"
 
-class GameScene : public Scene
+class EditScene : public Scene
 {
 public:
-	GameScene();
-	virtual ~GameScene() override;
+	EditScene();
+	virtual ~EditScene();
 
 	virtual void Init() override;
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
-private:
 
+private:
+	vector<pair<POINT, POINT>> _lines;
+
+	bool _setOrigin = true;
+	POINT _lastPos = {};
 };
 

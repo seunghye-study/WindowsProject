@@ -1,21 +1,16 @@
-﻿// WindowsProject.cpp : 애플리케이션에 대한 진입점을 정의합니다.
-//
-
+﻿#include "pch.h"
 #include "framework.h"
 #include "WindowsProject.h"
-#include "pch.h"
 #include "Game.h"
-#include "Resource.h"
+
 #define MAX_LOADSTRING 100
 
-// 전역 변수:
 HINSTANCE hInst; 
 HWND g_hWnd;
 
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-//INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -32,15 +27,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 게임 객체 생성
     Game game;
-    game.init(g_hWnd);
-    MSG msg = {};
+    game.Init(g_hWnd);
 
-    // 프레임 고정
+    MSG msg = {};
     uint64 prevTick = 0;
 
     // 3) 메인루프
-    // - 입력, 로직, 렌더링
-    // 종료메세지가 들어오지 않으면 종료
     while (msg.message != WM_QUIT)
     {
         if (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -50,19 +42,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            // 프레임 고정
             uint64 now = ::GetTickCount64();
-            if (now - prevTick >= 10)
+            // 프레임 고정
+            //if (now - prevTick >= 30)
             {
                 game.Update();
                 game.Render();
 
                 prevTick = now;
             }
-
-            // 게임 렌더
-            /*game.Update();
-            game.Render();*/
         }
     }
     return (int) msg.wParam;
@@ -92,13 +80,15 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance;
+
    RECT windowRect = { 0,0,800,600 };
    ::AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
+
    HWND hWnd = CreateWindowW(L"GameCoding", L"Client", WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, windowRect.right- windowRect.left, windowRect.bottom-windowRect.top, nullptr, nullptr, hInstance, nullptr);
    
-   // 전역변수에 hwnd저장
    g_hWnd = hWnd;
+   
    if (!hWnd)
    {
       return FALSE;
@@ -141,24 +131,4 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
-}
-
- //프로그램의 정보를 출력하는 부분 (프로그램 실행에 관계없음)
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
 }

@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "SceneManager.h"
-#include "GameScene.h"
 #include "DevScene.h"
+#include "GameScene.h"
+#include "EditScene.h"
+
 void SceneManager::Init()
 {
 
@@ -26,8 +28,11 @@ void SceneManager::Clear()
 
 void SceneManager::ChangeScene(SceneType sceneType)
 {
-	if (_sceneType == sceneType) return;
+	if (_sceneType == sceneType) 
+		return;
+
 	Scene* newScene = nullptr;
+
 	switch (sceneType)
 	{
 	case SceneType::DevScene:
@@ -36,14 +41,13 @@ void SceneManager::ChangeScene(SceneType sceneType)
 	case SceneType::GameScene:
 		newScene = new GameScene();
 		break;
+	case SceneType::EditScene:
+		newScene = new EditScene();
+		break;
 	}
-	// 씬이 존재하면 없애주고 새로운 씬으로 교체
-	// 널체크, 삭제, 널로 밀어주기( SAFE DELETE macro)
-	if (_scene)
-	{
-		delete _scene;
-		_scene = nullptr;
-	}
+
+	SAFE_DELETE(_scene);
+
 	_scene = newScene;
 	_sceneType = sceneType;
 
