@@ -1,10 +1,5 @@
 #pragma once
 
-#include "Types.h"
-#include "Define.h"
-#include "Enum.h"
-#include "Utils.h"
-
 #include <windows.h>
 #include <vector>
 #include <list>
@@ -12,6 +7,12 @@
 #include <unordered_map>
 #include <string>
 #include <algorithm>
+#include "Values.h"
+#include "Types.h"
+#include "Define.h"
+#include "Enum.h"
+#include "Utils.h"
+
 using namespace std;
 
 #include <format>
