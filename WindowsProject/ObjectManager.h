@@ -7,7 +7,7 @@ class ObjectManager
 public:
 	DECLARE_SINGLE(ObjectManager);
 	~ObjectManager();
-	
+
 	void Add(Object* object);
 	void Remove(Object* object);
 	void Clear();

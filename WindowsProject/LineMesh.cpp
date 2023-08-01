@@ -24,8 +24,9 @@ void LineMesh::Save(wstring path)
 	}
 
 	int32 midX = (maxX + minX) / 2;
-	int32 midY = (maxY + maxY) / 2;
+	int32 midY = (maxY + minY) / 2;
 
+	// 라인 개수
 	file << static_cast<int32>(_lines.size()) << endl;
 
 	for (auto& line : _lines)
@@ -38,9 +39,10 @@ void LineMesh::Save(wstring path)
 		to.x -= midX;
 		to.y -= midY;
 
-		wstring str = std::format(L"({0}, {1})->({2}, {3})", from.x, from.y, to.x, to.y);
+		wstring str = std::format(L"({0},{1})->({2},{3})", from.x, from.y, to.x, to.y);
 		file << str << endl;
 	}
+
 	file.close();
 }
 
@@ -49,6 +51,7 @@ void LineMesh::Load(wstring path)
 	wifstream file;
 	file.open(path);
 
+	// 라인 개수
 	int32 count;
 	file >> count;
 
@@ -61,10 +64,11 @@ void LineMesh::Load(wstring path)
 
 		wstring str;
 		file >> str;
-		::swscanf_s(str.c_str(), L"(%d, %d)->(%d, %d)", &pt1.x, &pt1.y, &pt2.x, &pt2.y);
+		::swscanf_s(str.c_str(), L"(%d,%d)->(%d,%d)", &pt1.x, &pt1.y, &pt2.x, &pt2.y);
 
 		_lines.push_back(make_pair(pt1, pt2));
 	}
+
 	file.close();
 }
 
@@ -76,12 +80,12 @@ void LineMesh::Render(HDC hdc, Pos pos) const
 		POINT pt2 = line.second;
 
 		Pos pos1;
-		pos1.x = pos.x +(float)pt1.x;
-		pos1.y = pos.y+(float)pt1.y;
+		pos1.x = pos.x + (float)pt1.x;
+		pos1.y = pos.y + (float)pt1.y;
 
 		Pos pos2;
-		pos2.x = pos.x+(float)pt2.x;
-		pos2.y = pos.y+(float)pt2.y;
+		pos2.x = pos.x + (float)pt2.x;
+		pos2.y = pos.y + (float)pt2.y;
 
 		Utils::DrawLine(hdc, pos1, pos2);
 	}

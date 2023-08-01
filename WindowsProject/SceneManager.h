@@ -2,7 +2,7 @@
 
 class SceneManager
 {
-	DECLARE_SINGLE(SceneManager);
+	DECLARE_SINGLE(SceneManager)
 
 public:
 	void Init();
@@ -18,4 +18,3 @@ private:
 	class Scene* _scene;
 	SceneType _sceneType = SceneType::None;
 };
-

@@ -5,7 +5,7 @@ class EditScene : public Scene
 {
 public:
 	EditScene();
-	virtual ~EditScene();
+	virtual ~EditScene() override;
 
 	virtual void Init() override;
 	virtual void Update() override;

@@ -43,7 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else
         {
             uint64 now = ::GetTickCount64();
-            // 프레임 고정
+
             //if (now - prevTick >= 30)
             {
                 game.Update();
@@ -53,6 +53,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
     }
+
     return (int) msg.wParam;
 }
 
@@ -71,7 +72,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
-    wcex.lpszClassName  = L"GameCoding";
+    wcex.lpszClassName  = L"WindowsProject";
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -84,7 +85,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    RECT windowRect = { 0,0,800,600 };
    ::AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
 
-   HWND hWnd = CreateWindowW(L"GameCoding", L"Client", WS_OVERLAPPEDWINDOW,
+   HWND hWnd = CreateWindowW(L"WindowsProject", L"Client", WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, windowRect.right- windowRect.left, windowRect.bottom-windowRect.top, nullptr, nullptr, hInstance, nullptr);
    
    g_hWnd = hWnd;

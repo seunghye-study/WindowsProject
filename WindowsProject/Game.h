@@ -5,7 +5,6 @@ class Game
 public:
 	Game();
 	~Game();
-
 public:
 	void Init(HWND hwnd);
 	void Update();
@@ -16,7 +15,6 @@ private:
 	HDC _hdc = {};
 
 private:
-	//Double buffering
 	RECT _rect;
 	HDC _hdcBack = {};
 	HBITMAP _bmpBack = {};

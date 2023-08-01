@@ -12,7 +12,6 @@ public:
 	virtual void Render(HDC hdc) override;
 
 public:
-	Pos _playerPos = { 300,300 };
+	Pos _playerPos = { 300, 300 };
 	float _speed = 1000;
 };
-

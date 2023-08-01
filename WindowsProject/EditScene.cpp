@@ -32,12 +32,10 @@ void EditScene::Update()
 			_lastPos = mousePos;
 		}
 	}
-	if (GET_SINGLE(InputManager)->GetButton(KeyType::RightMouse))
-	{
-		_setOrigin = true;
-	}
 
-	// save
+	if (GET_SINGLE(InputManager)->GetButtonDown(KeyType::RightMouse))
+		_setOrigin = true;
+
 	if (GET_SINGLE(InputManager)->GetButtonDown(KeyType::S))
 	{
 		wofstream file;
@@ -58,10 +56,10 @@ void EditScene::Update()
 			minY = min(min(minY, from.y), to.y);
 			maxY = max(max(maxY, from.y), to.y);
 		}
-		int32 midX = (maxX + minX) / 2;
-		int32 midY = (maxY + maxY) / 2;
 
-		// 라인 개수
+		int32 midX = (maxX + minX) / 2;
+		int32 midY = (maxY + minY) / 2;
+
 		file << static_cast<int32>(_lines.size()) << endl;
 
 		for (auto& line : _lines)
@@ -74,19 +72,17 @@ void EditScene::Update()
 			to.x -= midX;
 			to.y -= midY;
 
-			wstring str = std::format(L"({0}, {1})->({2}, {3})", from.x, from.y, to.x, to.y);
+			wstring str = std::format(L"({0},{1})->({2},{3})", from.x, from.y, to.x, to.y);
 			file << str << endl;
 		}
 		file.close();
 	}
 
-	//load
 	if (GET_SINGLE(InputManager)->GetButtonDown(KeyType::D))
 	{
 		wifstream file;
 		file.open(L"Unit.txt");
 
-		// 라인 수
 		int32 count;
 		file >> count;
 
@@ -102,16 +98,17 @@ void EditScene::Update()
 
 			wstring str;
 			file >> str;
-			::swscanf_s(str.c_str(), L"(%d, %d)->(%d, %d)", &pt1.x, &pt1.y, &pt2.x, &pt2.y);
-			
+			::swscanf_s(str.c_str(), L"(%d,%d)->(%d,%d)", &pt1.x, &pt1.y, &pt2.x, &pt2.y);
+
 			pt1.x += midX;
 			pt1.y += midY;
 			pt2.x += midX;
 			pt2.y += midY;
-			
+
 			_lines.push_back(make_pair(pt1, pt2));
 			_setOrigin = true;
 		}
+
 		file.close();
 	}
 }

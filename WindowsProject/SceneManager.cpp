@@ -28,7 +28,7 @@ void SceneManager::Clear()
 
 void SceneManager::ChangeScene(SceneType sceneType)
 {
-	if (_sceneType == sceneType) 
+	if (_sceneType == sceneType)
 		return;
 
 	Scene* newScene = nullptr;

@@ -14,7 +14,10 @@ enum class KeyType
 	W = 'W',
 	A = 'A',
 	S = 'S',
-	D = 'D'
+	D = 'D',
+
+	Q = 'Q',
+	E = 'E',
 };
 
 enum class KeyState
@@ -24,13 +27,13 @@ enum class KeyState
 	Down,
 	Up,
 
-	end
+	End
 };
 
 enum
 {
-	KEY_TYPE_COUNT = static_cast<int32>(UINT8_MAX)+1,
-	KEY_STATE_COUNT = static_cast<int32>(KeyState::end)
+	KEY_TYPE_COUNT = static_cast<int32>(UINT8_MAX) + 1,
+	KEY_STATE_COUNT = static_cast<int32>(KeyState::End)
 };
 
 class InputManager
@@ -47,7 +50,7 @@ public:
 	POINT GetMousePos() { return _mousePos; }
 
 private:
-	KeyState GetState(KeyType key) { return _states[static_cast<int32>(key)]; }
+	KeyState GetState(KeyType key) { return _states[static_cast<uint8>(key)]; }
 
 private:
 	HWND _hwnd = 0;

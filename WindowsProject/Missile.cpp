@@ -17,28 +17,31 @@ void Missile::Init()
 {
 	_stat.hp = 1;
 	_stat.maxHp = 1;
-	_stat.speed = 600;
+	_stat.speed = 500;
 }
 
 void Missile::Update()
 {
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
-	_pos.y -= deltaTime * _stat.speed;
 
-	//TODO: Ãæµ¹
+	_pos.x += _stat.speed * deltaTime * ::cos(_angle);
+	_pos.y -= _stat.speed * deltaTime * ::sin(_angle);
+
 	const vector<Object*> objects = GET_SINGLE(ObjectManager)->GetObjects();
-	
 	for (Object* object : objects)
 	{
-		if (object == this) continue;
-		if (object->GetObjectType() != ObjectType::Monster) continue;
+		if (object == this)
+			continue;
+
+		if (object->GetObjectType() != ObjectType::Monster)
+			continue;
 
 		Pos p1 = GetPos();
 		Pos p2 = object->GetPos();
 
 		const float dx = p1.x - p2.x;
 		const float dy = p1.y - p2.y;
-		float dist = sqrt(dx * dx + dy + dy);
+		float dist = sqrt(dx * dx + dy * dy);
 
 		if (dist < 25)
 		{

@@ -4,12 +4,11 @@
 class LineMesh : public ResourceBase
 {
 public:
-    void Save(wstring path);
-    void Load(wstring path);
+	void Save(wstring path);
+	void Load(wstring path);
 
-    void Render(HDC hdc, Pos pos) const;
+	void Render(HDC hdc, Pos pos) const;
 
 protected:
-    vector<pair<POINT, POINT>> _lines;
+	vector<pair<POINT, POINT>> _lines;
 };
-

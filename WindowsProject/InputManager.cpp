@@ -21,7 +21,7 @@ void InputManager::Update()
 
 			if (state == KeyState::Press || state == KeyState::Down)
 				state = KeyState::Press;
-			else 
+			else
 				state = KeyState::Down;
 		}
 		else
@@ -36,6 +36,6 @@ void InputManager::Update()
 	}
 
 	::GetCursorPos(&_mousePos);
-	::ScreenToClient(_hwnd, &_mousePos); 
+	::ScreenToClient(_hwnd, &_mousePos);
 }
 

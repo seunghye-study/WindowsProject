@@ -20,6 +20,7 @@ void Monster::Init()
 
 void Monster::Update()
 {
+
 }
 
 void Monster::Render(HDC hdc)

@@ -25,7 +25,7 @@ void Game::Init(HWND hwnd)
 
 	::GetClientRect(hwnd, &_rect);
 
-	_hdcBack = ::CreateCompatibleDC(_hdc); 
+	_hdcBack = ::CreateCompatibleDC(_hdc);
 	_bmpBack = ::CreateCompatibleBitmap(_hdc, _rect.right, _rect.bottom);
 	HBITMAP prev = (HBITMAP)::SelectObject(_hdcBack, _bmpBack);
 	::DeleteObject(prev);
@@ -55,14 +55,14 @@ void Game::Render()
 		wstring str = std::format(L"Mouse({0}, {1})", mousePos.x, mousePos.y);
 		::TextOut(_hdcBack, 20, 10, str.c_str(), static_cast<int32>(str.size()));
 	}
+	
 	{
 		wstring str = std::format(L"FPS({0}), DT({1} ms)", fps, static_cast<int32>(deltaTime * 1000));
 		::TextOut(_hdcBack, 650, 10, str.c_str(), static_cast<int32>(str.size()));
 	}
+
 	GET_SINGLE(SceneManager)->Render(_hdcBack);
 
-	//double Buffering
-	// 비트 블릿 : 고속 복사
 	::BitBlt(_hdc, 0, 0, _rect.right, _rect.bottom, _hdcBack, 0, 0, SRCCOPY);
 	::PatBlt(_hdcBack, 0, 0, _rect.right, _rect.bottom, WHITENESS);
 }
