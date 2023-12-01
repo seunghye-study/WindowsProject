@@ -13,7 +13,7 @@ public:
 	HDC GetDC();
 	int32 GetTransparent();
 	Vec2Int GetPos() { return Vec2Int{ _x, _y }; }
-	Vec2Int GetSize() {return Vec2Int{ _cx - _x, _cy - _y };}
+	Vec2Int GetSize() { return Vec2Int{ _cx, _cy};}
 
 private:
 	Texture* _texture = nullptr;
