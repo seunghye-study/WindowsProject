@@ -9,6 +9,7 @@
 #include "Sprite.h"
 #include "Actor.h"
 #include "SpriteActor.h"
+#include "player.h"
 
 DevScene::DevScene()
 {
@@ -52,23 +53,32 @@ void DevScene::Init()
 		const Vec2Int size = sprite->GetSize();
 
 		background->SetPos(Vec2(size.x/2, size.y/2));
-		_background = background;
+		_actors.push_back(background);
 	}
 
-	//
-	_background->BeginPlay();
+	{
+		Sprite* sprite = GET_SINGLE(ResourceManager)->GetSprite(L"Stage01");
+		Player* player = new Player();
+		player->SetSprite(sprite);
+		const Vec2Int size = sprite->GetSize();
+		player->SetPos(Vec2(size.x / 2, size.y / 2));
+		
+		_actors.push_back(player);
+	}
+	for (Actor* actor : _actors)
+		actor->BeginPlay();
+
 }
 
 void DevScene::Update()
 {
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
-	_background->Tick();
+	for (Actor* actor : _actors)
+		actor->Tick();
 }
 
 void DevScene::Render(HDC hdc)
 {
-	//Texture* tex = GET_SINGLE(ResourceManager)->GetTexture(L"Stage01");
-	//::BitBlt(hdc, 0, 0, GWinSizeX, GWinSizeY, sprite->GetDC(), sprite->GetPos().x,sprite->GetPos().y, SRCCOPY);
-
-	_background->Render(hdc);
+	for (Actor* actor : _actors)
+		actor->Render(hdc);
 }

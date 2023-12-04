@@ -45,6 +45,12 @@
     <Filter Include="소스 파일\01. Manager\Game">
       <UniqueIdentifier>{a0e560d5-d55b-4329-aa4f-b7cbea9b550e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\03. Objects\Unreal">
+      <UniqueIdentifier>{45bdf54f-ce39-48ff-a65c-52b4065e09a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05.Component">
+      <UniqueIdentifier>{45f6028f-ff4e-4675-90e7-a8fab0da52e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCoding.h">
@@ -113,14 +119,17 @@
     <ClInclude Include="Sprite.h">
       <Filter>소스 파일\04. Resources</Filter>
     </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>소스 파일\03. Objects\Game</Filter>
+    </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>소스 파일\03. Objects</Filter>
+      <Filter>소스 파일\03. Objects\Unreal</Filter>
     </ClInclude>
     <ClInclude Include="SpriteActor.h">
-      <Filter>소스 파일\03. Objects</Filter>
+      <Filter>소스 파일\03. Objects\Unreal</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>소스 파일\03. Objects</Filter>
+    <ClInclude Include="Component.h">
+      <Filter>소스 파일\05.Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -182,14 +191,17 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>소스 파일\04. Resources</Filter>
     </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>소스 파일\03. Objects\Game</Filter>
+    </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>소스 파일\03. Objects</Filter>
+      <Filter>소스 파일\03. Objects\Unreal</Filter>
     </ClCompile>
     <ClCompile Include="SpriteActor.cpp">
-      <Filter>소스 파일\03. Objects</Filter>
+      <Filter>소스 파일\03. Objects\Unreal</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\03. Objects</Filter>
+    <ClCompile Include="Component.cpp">
+      <Filter>소스 파일\05.Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
