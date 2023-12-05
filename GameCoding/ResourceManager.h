@@ -3,6 +3,8 @@
 class ResourceBase;
 class Texture;
 class Sprite;
+class Flipbook;
+
 
 class ResourceManager
 {
@@ -24,12 +26,16 @@ public:
 	Sprite* GetSprite(const wstring& key) { return _sprites[key]; }
 	Sprite* CreateSprite(const wstring& key, Texture* texture, int32 x = 0, int32 y = 0, int32 cx = 0, int32 cy = 0);
 
+	Flipbook* GetFlipbook(const wstring& key) { return _flipbooks[key]; }
+	Flipbook* CreateFlipbook(const wstring& key);
+
+
 private:
 	HWND _hwnd;
 	fs::path _resourcePath;
 
 	unordered_map<wstring, Texture*> _textures;
 	unordered_map<wstring, Sprite*> _sprites;
-
+	unordered_map<wstring, Flipbook*> _flipbooks;
 };
 
