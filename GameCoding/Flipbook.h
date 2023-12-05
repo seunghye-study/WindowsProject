@@ -18,6 +18,7 @@ struct FlipbookInfo
 
 class Flipbook : public ResourceBase
 {
+public:
 	Flipbook();
 	virtual ~Flipbook();
 
