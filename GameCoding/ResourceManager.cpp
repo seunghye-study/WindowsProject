@@ -2,6 +2,7 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 #include "Sprite.h"
+#include "Flipbook.h"
 
 ResourceManager::~ResourceManager()
 {
@@ -12,18 +13,17 @@ void ResourceManager::Init(HWND hwnd, fs::path resourcePath)
 {
 	_hwnd = hwnd;
 	_resourcePath = resourcePath;
-
-	//fs::current_path(); // 현재 경로를 받아오는 함수
-	//_resourcePath.relative_path(); // 상대경로
-	//fs::absolute(_resourcePath); // 절대경로
-
-
-
 }
 
 void ResourceManager::Clear()
 {
 	for (auto& item : _textures)
+		SAFE_DELETE(item.second);
+
+	for (auto& item : _sprites)
+		SAFE_DELETE(item.second);
+
+	for (auto& item : _flipbooks)
 		SAFE_DELETE(item.second);
 
 	_textures.clear();
@@ -60,3 +60,15 @@ Sprite* ResourceManager::CreateSprite(const wstring& key, Texture* texture, int3
 	_sprites[key] = sprite;
 	return sprite;
 }
+
+Flipbook* ResourceManager::CreateFlipbook(const wstring& key)
+{
+	if (_flipbooks.find(key) != _flipbooks.end())
+		return _flipbooks[key];
+
+	Flipbook* fb = new Flipbook();
+	_flipbooks[key] = fb;
+
+	return fb;
+}
+

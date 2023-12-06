@@ -21,4 +21,3 @@ public:
 protected:
 	Sprite* _sprite = nullptr;
 };
-

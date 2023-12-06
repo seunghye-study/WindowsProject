@@ -2,6 +2,7 @@
 #include "Scene.h"
 
 class Actor;
+class GameObject;
 
 class DevScene : public Scene
 {
@@ -13,7 +14,10 @@ public:
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
 
+	void AddActor(Actor* actor);
+	void RemoveActor(Actor* actor);
+
 public:
-	Actor* _background = nullptr;
+	vector<Actor*> _actors[LAYER_MAXCOUNT];
 };
 

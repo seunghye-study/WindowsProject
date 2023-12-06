@@ -10,3 +10,18 @@ enum class SceneType
 	MenuScene,
 	FortressScene,
 };
+
+enum LAYER_TYPE
+{
+	LAYER_BACKGROUND,
+	LAYER_OBJECT,
+	///
+	LAYER_UI,
+	LAYER_MAXCOUNT
+};
+
+enum class ColliderType
+{
+	Box,
+	Sphere,
+};
