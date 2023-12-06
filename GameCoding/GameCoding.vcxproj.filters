@@ -39,9 +39,6 @@
     <Filter Include="소스 파일\04. Resources\Game">
       <UniqueIdentifier>{badc758a-eb0d-4d2b-bcbd-ee5f03bba59c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\Game\Fortress">
-      <UniqueIdentifier>{2fda0feb-22ef-49c0-a0bf-35e28e4946c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01. Manager\Game">
       <UniqueIdentifier>{a0e560d5-d55b-4329-aa4f-b7cbea9b550e}</UniqueIdentifier>
     </Filter>
@@ -50,6 +47,12 @@
     </Filter>
     <Filter Include="소스 파일\05.Component">
       <UniqueIdentifier>{45f6028f-ff4e-4675-90e7-a8fab0da52e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05.Component\Collision">
+      <UniqueIdentifier>{6bcbec00-c141-48b3-9e9c-c65f8dd00c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05.Component\Camera">
+      <UniqueIdentifier>{be43582b-10dc-4b40-aba4-1ea93741a04c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +134,20 @@
     <ClInclude Include="Component.h">
       <Filter>소스 파일\05.Component</Filter>
     </ClInclude>
-    <ClInclude Include="Flipbook.h">
-      <Filter>소스 파일\03. Objects\Unreal</Filter>
-    </ClInclude>
     <ClInclude Include="FlipbookActor.h">
       <Filter>소스 파일\03. Objects\Unreal</Filter>
+    </ClInclude>
+    <ClInclude Include="Flipbook.h">
+      <Filter>소스 파일\04. Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>소스 파일\05.Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>소스 파일\05.Component\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereCollider.h">
+      <Filter>소스 파일\05.Component\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,11 +221,20 @@
     <ClCompile Include="Component.cpp">
       <Filter>소스 파일\05.Component</Filter>
     </ClCompile>
-    <ClCompile Include="Flipbook.cpp">
-      <Filter>소스 파일\03. Objects\Unreal</Filter>
-    </ClCompile>
     <ClCompile Include="FlipbookActor.cpp">
       <Filter>소스 파일\03. Objects\Unreal</Filter>
+    </ClCompile>
+    <ClCompile Include="Flipbook.cpp">
+      <Filter>소스 파일\04. Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>소스 파일\05.Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>소스 파일\05.Component\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereCollider.cpp">
+      <Filter>소스 파일\05.Component\Collision</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

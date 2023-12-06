@@ -1,7 +1,6 @@
 #pragma once
 #include "ResourceBase.h"
 
-// texture의 영역을 찝어서 사용하는 가위같은 역할
 class Texture;
 
 class Sprite : public ResourceBase
