@@ -15,7 +15,6 @@ struct FlipbookInfo
 	bool loop = true;
 };
 
-
 class Flipbook : public ResourceBase
 {
 public:

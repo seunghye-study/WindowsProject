@@ -1,9 +1,8 @@
 #include "pch.h"
-#include "player.h"
+#include "Player.h"
 #include "InputManager.h"
-#include "ResourceManager.h"
 #include "TimeManager.h"
-#include "InputManager.h"
+#include "ResourceManager.h"
 #include "Flipbook.h"
 #include "CameraComponent.h"
 
@@ -12,7 +11,7 @@ Player::Player()
 	_flipbookUp = GET_SINGLE(ResourceManager)->GetFlipbook(L"FB_MoveUp");
 	_flipbookDown = GET_SINGLE(ResourceManager)->GetFlipbook(L"FB_MoveDown");
 	_flipbookLeft = GET_SINGLE(ResourceManager)->GetFlipbook(L"FB_MoveLeft");
-	_flipbookRight = GET_SINGLE(ResourceManager)->GetFlipbook(L"FB_MoveRight"); 
+	_flipbookRight = GET_SINGLE(ResourceManager)->GetFlipbook(L"FB_MoveRight");
 
 	CameraComponent* camera = new CameraComponent();
 	AddComponent(camera);
@@ -20,23 +19,24 @@ Player::Player()
 
 Player::~Player()
 {
+
 }
 
 void Player::BeginPlay()
 {
 	Super::BeginPlay();
-	SetFlipbook(_flipbookRight);
 
-	
+	SetFlipbook(_flipbookRight);	
 }
 
 void Player::Tick()
 {
 	Super::Tick();
+
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 
 	// TODO
-	if(GET_SINGLE(InputManager)->GetButton(KeyType::W))
+	if (GET_SINGLE(InputManager)->GetButton(KeyType::W))
 	{
 		_pos.y -= 200 * deltaTime;
 		SetFlipbook(_flipbookUp);
@@ -46,12 +46,12 @@ void Player::Tick()
 		_pos.y += 200 * deltaTime;
 		SetFlipbook(_flipbookDown);
 	}
-	else if (GET_SINGLE(InputManager)->GetButton(KeyType::A))
+	else  if  (GET_SINGLE(InputManager)->GetButton(KeyType::A))
 	{
 		_pos.x -= 200 * deltaTime;
 		SetFlipbook(_flipbookLeft);
 	}
-	else if (GET_SINGLE(InputManager)->GetButton(KeyType::D))
+	else  if (GET_SINGLE(InputManager)->GetButton(KeyType::D))
 	{
 		_pos.x += 200 * deltaTime;
 		SetFlipbook(_flipbookRight);
@@ -61,4 +61,16 @@ void Player::Tick()
 void Player::Render(HDC hdc)
 {
 	Super::Render(hdc);
+
+
+}
+
+void Player::OnComponentBeginOverlap(Collider* collider, Collider* other)
+{
+	
+}
+
+void Player::OnComponentEndOverlap(Collider* collider, Collider* other)
+{
+
 }

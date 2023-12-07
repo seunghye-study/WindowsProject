@@ -7,14 +7,15 @@ class Component
 public:
 	Component();
 	virtual ~Component();
+
 	virtual void BeginPlay() {}
 	virtual void TickComponent() {}
-	virtual void Render(HDC hdc) {}
+	virtual void Render(HDC hdc) { }
 
-	// owner
-	void SetOwner(Actor* owner) { _owner = owner;}
+	void SetOwner(Actor* owner) { _owner = owner; }
 	Actor* GetOwner() { return _owner; }
+
 protected:
-	Actor* _owner = nullptr;
+	Actor* _owner;
 };
 
