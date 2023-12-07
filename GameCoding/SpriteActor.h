@@ -12,12 +12,11 @@ public:
 
 	virtual void BeginPlay() override;
 	virtual void Tick() override;
-
-	virtual void Render(HDC hdc);
+	virtual void Render(HDC hdc) override;
 
 	void SetSprite(Sprite* sprite) { _sprite = sprite; }
-
 
 protected:
 	Sprite* _sprite = nullptr;
 };
+

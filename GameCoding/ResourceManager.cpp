@@ -20,24 +20,27 @@ void ResourceManager::Clear()
 	for (auto& item : _textures)
 		SAFE_DELETE(item.second);
 
+	_textures.clear();
+
 	for (auto& item : _sprites)
 		SAFE_DELETE(item.second);
+
+	_sprites.clear();
 
 	for (auto& item : _flipbooks)
 		SAFE_DELETE(item.second);
 
-	_textures.clear();
+	_flipbooks.clear();
 }
 
-Texture* ResourceManager::LoadTexture(const wstring& key, const wstring& path, uint32 transparent)
+Texture* ResourceManager::LoadTexture(const wstring& key, const wstring& path, uint32 transparent /*= RGB(255, 0, 255)*/)
 {
-
 	if (_textures.find(key) != _textures.end())
 		return _textures[key];
 
-	fs::path fullPath = _resourcePath/path;
-	Texture* texture = new Texture();
+	fs::path fullPath = _resourcePath / path;
 
+	Texture* texture = new Texture();
 	texture->LoadBmp(_hwnd, fullPath.c_str());
 	texture->SetTransparent(transparent);
 	_textures[key] = texture;
@@ -58,6 +61,7 @@ Sprite* ResourceManager::CreateSprite(const wstring& key, Texture* texture, int3
 
 	Sprite* sprite = new Sprite(texture, x, y, cx, cy);
 	_sprites[key] = sprite;
+
 	return sprite;
 }
 
@@ -71,4 +75,3 @@ Flipbook* ResourceManager::CreateFlipbook(const wstring& key)
 
 	return fb;
 }
-

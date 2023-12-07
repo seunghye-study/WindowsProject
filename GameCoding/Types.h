@@ -104,7 +104,7 @@ struct VectorInt
 {
 	VectorInt() {}
 	VectorInt(int32 x, int32 y) : x(x), y(y) {}
-	VectorInt(POINT pt) : x((int32)pt.x), y((int32)pt.y) { }
+	VectorInt(POINT pt) : x(pt.x), y(pt.y) { }
 
 	VectorInt operator+(const VectorInt& other)
 	{
@@ -114,7 +114,7 @@ struct VectorInt
 		return ret;
 	}
 
-	VectorInt operator-(const Vector& other)
+	VectorInt operator-(const VectorInt& other)
 	{
 		VectorInt ret;
 		ret.x = x - other.x;
@@ -122,7 +122,7 @@ struct VectorInt
 		return ret;
 	}
 
-	VectorInt operator*(float value)
+	VectorInt operator*(int32 value)
 	{
 		VectorInt ret;
 		ret.x = x * value;
@@ -142,12 +142,22 @@ struct VectorInt
 		y -= other.y;
 	}
 
-	float Dot(VectorInt other)
+	int32 LengthSquared()
+	{
+		return x * x + y * y;
+	}
+
+	float Length()
+	{
+		return (float)::sqrt(LengthSquared());
+	}
+
+	int32 Dot(VectorInt other)
 	{
 		return x * other.x + y * other.y;
 	}
 
-	float Cross(VectorInt other)
+	int32 Cross(VectorInt other)
 	{
 		return x * other.y - y * other.x;
 	}
@@ -155,7 +165,6 @@ struct VectorInt
 	int32 x = 0;
 	int32 y = 0;
 };
-
 
 using Pos = Vector;
 using Vec2 = Vector;
